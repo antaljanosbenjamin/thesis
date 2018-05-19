@@ -1,0 +1,18 @@
+$
+\duplicateelimination
+\Bigl(
+	\underbrace{
+		\projection{\var{p}.\atom{name} / \var{name}}}
+	_{\atom{q2}}
+	%
+	\underbrace{
+		\selection{\var{p}.\atom{age} < 30}}
+	_{\atom{q1}}
+	%
+	\underbrace{
+		\left(
+		\getvertices{p, \var{p}.\atom{age}, \var{p}.\atom{name}}{Person}
+		\right)}
+	_{\atom{q0}}
+\Bigr)
+$

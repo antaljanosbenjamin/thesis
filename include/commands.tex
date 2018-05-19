@@ -1,0 +1,313 @@
+\newcommand{\retescale}{0.45}
+\newcommand{\patternscale}{0.28}
+\newcommand{\diagramscale}{0.75}
+\newcommand{\phasesscale}{0.5}
+
+\newcommand{\mysf}[1]{$\mathsf{#1}$}
+\newcommand{\query}[1]{\mysf{#1}\xspace}
+
+\newcommand{\connectedsegments}{\query{ConnectedSegments}}
+\newcommand{\poslength}{\query{PosLength}}
+\newcommand{\routesensor}{\query{RouteSensor}}
+\newcommand{\switchmonitored}{\query{SwitchMonitored}}
+\newcommand{\switchset}{\query{SwitchSet}}
+\newcommand{\semaphoreneighbor}{\query{SemaphoreNeighbor}}
+
+\newcommand{\pglong}{property graph\xspace}
+\newcommand{\pg}{PG\xspace}
+
+\newcommand{\ingraph}{\mbox{ingraph}\xspace}
+\newcommand{\lftj}{LFTJ\xspace}
+\newcommand{\lftjlong}{Leapfrog Triejoin\xspace}
+
+\newcommand{\gcore}{\mbox{G-CORE}\xspace}
+
+\newcommand{\rete}{\mbox{Rete}\xspace}
+\newcommand{\treat}{\mbox{TREAT}\xspace}
+\newcommand{\atreat}{\mbox{A-TREAT}\xspace}
+\newcommand{\gator}{\mbox{Gator}\xspace}
+
+\newcommand{\trainbenchmark}{Train Benchmark\xspace}
+
+\newcommand{\dbtoaster}{DBToaster\xspace}
+\newcommand{\graphflow}{Graphflow\xspace}
+\newcommand{\iq}{\mbox{\textsc{IncQuery}}\xspace}
+\newcommand{\iqd}{\mbox{\textsc{IncQuery-D}}\xspace}
+\newcommand{\eiq}{\mbox{\textsc{EMF-IncQuery}}\xspace}
+\newcommand{\viatra}{\mbox{\textsc{Viatra}}\xspace}
+\newcommand{\viatraquery}{\mbox{\textsc{Viatra} Query}\xspace}
+\newcommand{\vql}{\mbox{\textsc{Viatra} Query Language}\xspace}
+\newcommand{\tb}{Train Benchmark\xspace}
+\newcommand{\saphana}{SAP \mbox{HANA}\xspace}
+\newcommand{\opencypher}{\mbox{openCypher}\xspace}
+\newcommand{\cypher}{\mbox{Cypher}\xspace}
+\newcommand{\sql}{\mbox{SQL}\xspace}
+\newcommand{\sparql}{\mbox{SPARQL}\xspace}
+
+\newcommand{\ldbc}{LDBC\xspace}
+\newcommand{\ldbcsnb}{LDBC SNB\xspace}
+
+\newcommand{\queryplanscale}{0.9}
+
+\newcommand{\fig}[4]{
+	\centerline{\includegraphics[scale=#4]{#1}}
+	\captionof{figure}{#3.}\label{fig:#2}
+}
+
+\newcommand{\eg}{e.g.\xspace}
+\newcommand{\ie}{i.e.\xspace}
+\newcommand{\etal}{et al.\xspace}
+\newcommand{\wrt}{w.r.t.\xspace}
+\newcommand{\etc}{etc.\xspace}
+
+% http://colorbrewer2.org/#type=qualitative&scheme=Set1&n=9
+\definecolor{self}{HTML}{4daf4a}
+\definecolor{read}{HTML}{377eb8}
+\definecolor{prog}{HTML}{ff7f00}
+\definecolor{todo}{HTML}{e41a1c}
+
+\newcommand{\gra}{GRA\xspace}
+\newcommand{\nra}{NRA\xspace}
+\newcommand{\fra}{FRA\xspace}
+\newcommand{\sqlplan}{SQL~algebra\xspace}
+
+\newcommand*{\mydots}{\ifmmode\mathellipsis\else.\kern-0.13em.\kern-0.13em.\fi} % touching at \kern-0.1725em
+
+\newcommand{\op}[2]{\mathrm{#1}\left(#2\right)}
+
+\newcommand{\vertexlabelfunction}{\mathit{lbl}}
+\newcommand{\edgelabelfunction}{\mathit{typ}}
+
+\newcommand{\vertexlabels}{L}
+\newcommand{\edgelabels}{T}
+
+\newcommand{\verticestoedges}{\mathit{st}}
+\newcommand{\propertyfunction}[2]{\atom{#1}(#2)}
+
+\newcommand{\vertexproperties}{P_v}
+\newcommand{\edgeproperties}{P_e}
+
+\newcommand{\breakable}[2][c]{\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+
+\newcommand{\attr}[1]{\mathrm{attr}(#1)}
+\newcommand{\dom}[1]{\mathrm{dom}(#1)}
+
+%\newcommand{\yes}{$\CIRCLE$\xspace}
+%\newcommand{\maybe}{$\LEFTcircle$\xspace}
+%\newcommand{\no}{$\Circle$\xspace}
+\newcommand{\yes}{$\bigotimes$\xspace}
+\newcommand{\maybe}{$\bigoslash$\xspace}
+\newcommand{\no}{$\bigcirc$\xspace}
+
+\newcommand{\nfii}{NF\textsuperscript{2}\xspace}
+
+\newcommand{\yedscale}{0.33}
+
+\newcommand{\smallexamplespacing}{\vspace{-0.2ex}}
+\newcommand{\examplespacing}{\vspace{0.6ex}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\cypherexamplenoquery}[4]{
+	\examplespacing
+	\noindent\begin{minipage}{\linewidth}
+		\rule{\linewidth}{0.8pt}
+		{\bf Example.} {\it #4}
+		
+		\vspace{-1.5ex}\rule{\linewidth}{0.4pt}\examplespacing
+		
+		\centering\input{relalg/#3-gra}
+
+		\smallexamplespacing\rule{\linewidth}{0.8pt}
+	\end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sqlexample}[4]{
+  \examplespacing
+  \noindent\begin{minipage}{\linewidth}
+  \rule{\linewidth}{0.8pt}
+  {\bf Példa.} {\it #4}
+  
+  \vspace{-1.5ex}\rule{\linewidth}{0.4pt}
+  
+  \centering
+  \begin{minipage}{#1\textwidth}
+  \lstinputlisting[]{queries/#3.cypher}
+  \end{minipage}
+  \begin{minipage}{#2\textwidth}
+  \footnotesize\input{output/#3}
+  \end{minipage}
+
+  \rule{\linewidth}{0.4pt}\examplespacing
+ 
+  \centering\input{relalg/#3}
+  
+  \rule{\linewidth}{0.4pt}\examplespacing
+  
+  \begin{minipage}{\textwidth}
+  	\lstinputlisting[language=SQL, numbers=left, morekeywords={WITH}]{queries/#3.sql}
+  \end{minipage}
+    
+  \smallexamplespacing\rule{\linewidth}{0.8pt}
+  \end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\nraexample}[3]{
+  \noindent\begin{minipage}{\linewidth}
+  \rule{\linewidth}{0.8pt}
+  \texttt{\gra:} \input{relalg/#1-gra}
+  
+  %\vspace{-1.5ex}
+
+  \texttt{\nra:} \input{relalg/#1-nra}
+  
+  \vspace{-0.5ex}\rule{\linewidth}{0.8pt}
+  \end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\fraexample}[3]{
+  \noindent\begin{minipage}{\linewidth}
+  \rule{\linewidth}{0.8pt}
+  %\texttt{\nra:}
+  \input{relalg/#1-nra}
+  
+  %\vspace{-1.5ex}
+  \rule{\linewidth}{0.4pt}
+  
+  %\texttt{\fra:}
+  \input{relalg/#1-fra}
+  
+  \vspace{-0.5ex}\rule{\linewidth}{0.8pt}
+  \end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\labelscell}{0.8cm}
+
+\newcommand{\propstablewidth}{2.0cm}
+\newcommand{\propscelli}{0.7cm}
+\newcommand{\propscellii}{0.75cm}
+
+%\newcommand{\propscellnarrowi}{0.5cm}
+%\newcommand{\propscellnarrowii}{0.45cm}
+\newcommand{\myvspace}{\vspace*{0.8ex}}
+
+\newcommand{\metadata}{\scriptsize \sf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\labelsi}[1]{
+  \begin{tabular}{|p{\labelscell}|}
+		\hline
+		\metadata #1    \\ \hline
+	\end{tabular}
+}
+\newcommand{\labelsii}[2]{
+  \begin{tabular}{|p{\labelscell}|}
+		\hline
+		\metadata #1 \\ \hline
+		\metadata #2 \\ \hline
+	\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\propsi}[2]{
+  \begin{minipage}{\propstablewidth}
+  \myvspace
+  \centering
+  \begin{tabular}{|p{\propscelli}|p{\propscellii}|}
+  	\hline
+  	\scriptsize \sf #1 & #2 \\ \hline
+  \end{tabular}
+  \myvspace
+  \end{minipage}
+}
+
+\newcommand{\propsii}[4]{
+  \begin{minipage}{\propstablewidth}
+  \myvspace
+  \centering
+	\begin{tabular}{|p{\propscelli}|p{\propscellii}|}
+		\hline
+		\scriptsize \sf #1 & #2 \\ \hline
+		\scriptsize \sf #3 & #4 \\ \hline
+	\end{tabular}
+  \myvspace
+  \end{minipage}
+}
+
+\newcommand{\propsiii}[6]{
+  \begin{minipage}{\propstablewidth}
+  \myvspace
+  \centering
+  \begin{tabular}{|p{\propscelli}|p{\propscellii}|}
+  	\hline
+  	\scriptsize \sf #1 & #2 \\ \hline
+  	\scriptsize \sf #3 & #4 \\ \hline
+  	\scriptsize \sf #5 & #6 \\ \hline
+  \end{tabular}
+  \myvspace
+  \end{minipage}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\itemsi}[1]{
+%  \ensuremath{
+%  \begin{tabular}{|l|l|}
+%		\hline
+%		\bf i & \bf item \\ \hline
+%		1 & \sf #1   \\ \hline
+%	\end{tabular}
+%  }
+  [#1]
+}
+\newcommand{\itemsii}[2]{
+%  \ensuremath{
+%	\begin{tabular}{|l|l|}
+%		\hline
+%		\bf i & \bf item \\ \hline
+%		1 & \sf #1   \\ \hline
+%		2 & \sf #2   \\ \hline
+%	\end{tabular}
+%  }
+  [#1, #2]
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\vertextablewidth}{4.5cm}
+\newcommand{\vertextablewidthii}{4.8cm}
+\newcommand{\vertexrow}[3]{
+		$#1$ & #2 & \multicolumn{2}{c|}{#3}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\edgetablewidth}{3.6cm}
+\newcommand{\edgetablewidthii}{3.9cm}
+\newcommand{\edgerow}[5]{
+    #1 & $#2$ & $#3$ & \sf #4 & \multicolumn{2}{c|}{#5}
+}
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\expandafter\let\expandafter\pnewline\csname\string\ \endcsname
+
+\newcommand{\mynotecolor}[3]{
+     \textcolor{#3}{%
+       \fbox{\bfseries\sffamily\scriptsize#1}%
+       {\small$\blacktriangleright$\textsf{\emph{#2}}$\blacktriangleleft$}%
+     }%
+}
+\newcommand{\mynote}[2]{\mynotecolor{#1}{\footnotesize #2}{red}}
+\newcommand\g[1]{\mynote{TODO}{#1}}
+
+\newcommand{\grv}{\mathsf{V}}
+\newcommand{\gre}{\mathsf{E}}
+
+\newcommand{\set}[1]{$S_#1$}
+\newcommand{\rel}[1]{$r$}
+\newcommand{\keyword}[1]{\textcolor{blue}{\MakeUppercase{\tt \textbf{#1}}}}
+
+\newcommand{\virtuoso}{SDB1\xspace}
+\newcommand{\stardog}{SDB2\xspace}

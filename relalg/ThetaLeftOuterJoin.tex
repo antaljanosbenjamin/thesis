@@ -1,0 +1,17 @@
+{
+\newcommand{\ph}{\vphantom{\bigg()}}
+$
+\projection{p.\atom{name}, t.\atom{topic}}
+\biggl(
+	\underbrace{
+		\left(\getvertices{p, \var{p}.\atom{name}}{Person}\right)
+	\ph}_{\atom{q0}}
+	\underbrace{
+		\underset{\var{i}.\atom{level} > 3}{\leftouterjoin}
+	\ph}_{\atom{q2}}
+	\underbrace{
+		\left[\getedgesdirected{p}{}{t, \var{t}.\atom{topic}}{Tag}{i, \var{i}.\atom{level}}{INTEREST}\right]
+	\ph}_{\atom{q1}}
+\biggr)
+$
+}

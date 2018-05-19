@@ -1,0 +1,32 @@
+{
+\newcommand{\ph}{\vphantom{\Bigg()}}
+$
+\projection{\var{foaf}.\atom{name}}
+\underbrace{
+	\alldifferent{\var{el}}
+\ph}_{\atom{q8}}
+%
+\Biggl(
+	\biggl(
+		\underbrace{
+			\selection{\var{p}.\atom{name} = \literal{"Bob"}}
+		\ph}_{\atom{q1}}
+		\underbrace{
+			\left(\getvertices{p, \var{p}.\atom{name}}{Person}\right)
+		\ph}_{\atom{q0}}
+	\biggr)
+	\underbrace{
+		\transitivejoin{\atom{1}}{\atom{6}}
+	\ph}_{\atom{q5}}
+	\underbrace{
+		\left[\getedgesundirected{p}{}{\var{foaf}}{}{\var{el}}{KNOWS}\right]
+	\ph}_{\atom{q4} = \atom{q2} \cup \atom{q3}}
+	\underbrace{
+		\join
+	\ph}_{\atom{q7}}
+	\underbrace{
+		\left(\getvertices{foaf, \var{foaf}.\atom{name}}{}\right)
+	\ph}_{\atom{q6}}
+\Biggr)
+$
+}

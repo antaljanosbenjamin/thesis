@@ -1,0 +1,130 @@
+{
+  "all_metrics" : [ {
+    "name" : "LdbcQuery11",
+    "unit" : "MILLISECONDS",
+    "count" : 7,
+    "run_time" : {
+      "name" : "Runtime",
+      "unit" : "MILLISECONDS",
+      "count" : 7,
+      "mean" : 392.14285714285717,
+      "min" : 142,
+      "max" : 500,
+      "25th_percentile" : 143,
+      "50th_percentile" : 490,
+      "75th_percentile" : 491,
+      "90th_percentile" : 494,
+      "95th_percentile" : 500,
+      "99th_percentile" : 500,
+      "99.9th_percentile" : 500,
+      "std_dev" : 157.94341533910045
+    }
+  }, {
+    "name" : "LdbcQuery12",
+    "unit" : "MILLISECONDS",
+    "count" : 3,
+    "run_time" : {
+      "name" : "Runtime",
+      "unit" : "MILLISECONDS",
+      "count" : 3,
+      "mean" : 5176.0,
+      "min" : 4995,
+      "max" : 5334,
+      "25th_percentile" : 4995,
+      "50th_percentile" : 5199,
+      "75th_percentile" : 5199,
+      "90th_percentile" : 5334,
+      "95th_percentile" : 5334,
+      "99th_percentile" : 5334,
+      "99.9th_percentile" : 5334,
+      "std_dev" : 139.34848402476433
+    }
+  }, {
+    "name" : "LdbcQuery2",
+    "unit" : "MILLISECONDS",
+    "count" : 4,
+    "run_time" : {
+      "name" : "Runtime",
+      "unit" : "MILLISECONDS",
+      "count" : 4,
+      "mean" : 2536.5,
+      "min" : 2521,
+      "max" : 2551,
+      "25th_percentile" : 2521,
+      "50th_percentile" : 2528,
+      "75th_percentile" : 2546,
+      "90th_percentile" : 2551,
+      "95th_percentile" : 2551,
+      "99th_percentile" : 2551,
+      "99.9th_percentile" : 2551,
+      "std_dev" : 12.379418403139947
+    }
+  }, {
+    "name" : "LdbcQuery3",
+    "unit" : "MILLISECONDS",
+    "count" : 1,
+    "run_time" : {
+      "name" : "Runtime",
+      "unit" : "MILLISECONDS",
+      "count" : 1,
+      "mean" : 24772.0,
+      "min" : 24772,
+      "max" : 24772,
+      "25th_percentile" : 24772,
+      "50th_percentile" : 24772,
+      "75th_percentile" : 24772,
+      "90th_percentile" : 24772,
+      "95th_percentile" : 24772,
+      "99th_percentile" : 24772,
+      "99.9th_percentile" : 24772,
+      "std_dev" : 0.0
+    }
+  }, {
+    "name" : "LdbcQuery5",
+    "unit" : "MILLISECONDS",
+    "count" : 2,
+    "run_time" : {
+      "name" : "Runtime",
+      "unit" : "MILLISECONDS",
+      "count" : 2,
+      "mean" : 11234.0,
+      "min" : 10724,
+      "max" : 11744,
+      "25th_percentile" : 10724,
+      "50th_percentile" : 10724,
+      "75th_percentile" : 11744,
+      "90th_percentile" : 11744,
+      "95th_percentile" : 11744,
+      "99th_percentile" : 11744,
+      "99.9th_percentile" : 11744,
+      "std_dev" : 510.0
+    }
+  }, {
+    "name" : "LdbcQuery8",
+    "unit" : "MILLISECONDS",
+    "count" : 33,
+    "run_time" : {
+      "name" : "Runtime",
+      "unit" : "MILLISECONDS",
+      "count" : 33,
+      "mean" : 4602.242424242424,
+      "min" : 4469,
+      "max" : 5456,
+      "25th_percentile" : 4521,
+      "50th_percentile" : 4561,
+      "75th_percentile" : 4619,
+      "90th_percentile" : 4676,
+      "95th_percentile" : 4709,
+      "99th_percentile" : 5456,
+      "99.9th_percentile" : 5456,
+      "std_dev" : 167.73337975797224
+    }
+  } ],
+  "format_version" : 3,
+  "unit" : "MILLISECONDS",
+  "start_time" : 1540400274186,
+  "latest_finish_time" : 1540400501751,
+  "total_duration" : 227565,
+  "total_count" : 50,
+  "throughput" : 0.21971744336782897
+}

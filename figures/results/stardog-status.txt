@@ -1,0 +1,33 @@
+Backup Storage Directory : .backup
+CPU Load                 : 0.02 %
+Connection Timeout       : 10m
+Export Storage Directory : .exports
+Memory Direct            :  48M (Max: 192G)
+Memory Direct Buffers    :  52K (Max: 9.5G)
+Memory Direct Mapped     :  48M (Max:  38G)
+Memory Direct Pool       :   0B (Max: 142G)
+Memory Heap              : 1.9G (Max:  15G)
+Page Cache Count         : 5
+Page Cache Hit Ratio     : 96.30 %
+Page Cache Memory        : 116K
+Platform Arch            : amd64
+Platform OS              : Linux 4.13.0-1011-azure, Java 1.8.0_151
+Query All Graphs         : false
+Query Timeout            : 1h
+Security Disabled        : false
+Stardog Home             : /mnt/gabor/stardog
+Stardog Version          : 5.2.1
+Strict Parsing           : true
+Uptime                   : 1 minute 24 seconds
+Databases                :
++----------+-------------+-------+---------+---------------+----------+---------+---------+---------------+----------+
+|          | Connections |                Transactions                |                   Queries                    |
++----------+-------------+-------+---------+---------------+----------+---------+---------+---------------+----------+
+| Name     | Open        | Open  | Total   | Avg. Time (s) | Rate/sec | Running | Total   | Avg. Time (s) | Rate/sec |
++----------+-------------+-------+---------+---------------+----------+---------+---------+---------------+----------+
+| ldbcsf01 |           0 |     0 |       0 |         0.000 |    0.000 |       0 |       0 |         0.000 |    0.000 |
+| ldbcsf03 |           0 |     0 |       0 |         0.000 |    0.000 |       0 |       0 |         0.000 |    0.000 |
+| ldbcsf1  |           0 |     0 |       0 |         0.000 |    0.000 |       0 |       0 |         0.000 |    0.000 |
+| ldbcsf10 |           0 |     0 |       0 |         0.000 |    0.000 |       0 |       0 |         0.000 |    0.000 |
+| ldbcsf3  |           0 |     0 |       0 |         0.000 |    0.000 |       0 |       0 |         0.000 |    0.000 |
++----------+-------------+-------+---------+---------------+----------+---------+---------+---------------+----------+

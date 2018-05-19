@@ -1,0 +1,71 @@
+\usepackage{listings}
+
+\usepackage{textcomp}
+\lstset{upquote=true}
+
+\definecolor{keyword}{HTML}{2771a3}
+\definecolor{pattern}{HTML}{b53c2f}
+\definecolor{string}{HTML}{be681c}
+\definecolor{relation}{HTML}{7e4894}
+\definecolor{variable}{HTML}{107762}
+\definecolor{comment}{HTML}{8d9094}
+
+\lstset{
+	numbers=none,
+	stepnumber=1,
+	numbersep=5pt,
+	basicstyle=\small\ttfamily,
+	keywordstyle=\color{keyword}\bfseries\ttfamily,
+	commentstyle=\color{comment}\ttfamily,
+	stringstyle=\color{string}\ttfamily,
+	identifierstyle=,
+	showstringspaces=false,
+	aboveskip=3pt,
+	belowskip=3pt,
+	columns=flexible,
+	keepspaces=true,
+	breaklines=true,	
+	captionpos=b,
+	tabsize=2,
+	frame=none,
+	escapeinside={\%*}{*)},
+}
+
+\lstdefinelanguage{cypher}
+{
+	morekeywords={
+		MATCH, OPTIONAL, WHERE, NOT, AND, OR, XOR, RETURN, DISTINCT, ORDER, BY, ASC, ASCENDING, DESC, DESCENDING, UNWIND, AS, UNION, WITH, ALL, CREATE, DELETE, DETACH, REMOVE, SET, MERGE, SET, SKIP, LIMIT, IN,
+		% some legacy rules
+		INDEX, DROP, UNIQUE, CONSTRAINT, EXPLAIN, PROFILE, START, CASE,
+		% some SQL-only keywords
+		GROUP, HAVING,
+	},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]{"},
+}
+
+\newcommand{\listingcypher}[2]{
+%	\noindent
+%  \begin{minipage}{\linewidth}
+	\lstinputlisting[float, language=Cypher, numbers=left, label=lst:#1, caption=#2.]{queries/#1.cypher}
+%	\end{minipage}
+}
+
+\newcommand{\listingsql}[2]{
+	\lstinputlisting[float, language=SQL, numbers=left, label=lst:#1, caption=#2.]{queries/#1.sql}
+}
+
+\newcommand{\mycdots}{\cdot\!\cdot\!\cdot}
+\lstset{language=cypher,
+	literate=*
+	{...}{$\mycdots$}{1}
+	{theta}{$\theta$}{1}
+	{<<}{\color{variable}\guillemotleft{}}{1}
+	{>>}{\textcolor{variable}{\guillemotright{}}\color{black}}{1}
+	{[[}{\color{relation}$\{\mkern-4.2mu|$}{1}
+	{]]}{\textcolor{relation}{$|\mkern-4.3mu\}$}\color{black}}{1}
+	{<p>}{\color{pattern}$(\mkern-4.2mu|$}{1}
+	{</p>}{\textcolor{pattern}{$|\mkern-4.3mu)$}\color{black}}{1}
+}

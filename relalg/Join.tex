@@ -1,0 +1,26 @@
+{
+\newcommand{\ph}{\vphantom{\Bigg()}}
+$
+\projection{\var{foaf}.\atom{name}}
+\underbrace{
+	\alldifferent{\var{e1}, \var{e2}}
+\ph}_{\atom{q8}}
+%
+\Biggl(
+	\biggl(
+		\underbrace{
+			\selection{\var{p}.\atom{name} = \literal{"Alice"}}
+		\ph}_{\atom{q3}}
+		\underbrace{
+			\left[\getedgesundirected{p, \var{p}.\atom{name}}{Person}{f}{}{e1}{KNOWS}\right]
+		\ph}_{\atom{q2} = \atom{q0} \cup \atom{q1}}
+	\biggr)
+	\underbrace{
+		\join
+	\ph}_{\atom{q7}}
+	\underbrace{
+		\left[\getedgesundirected{f}{}{\var{foaf}, \var{foaf}.\atom{name}}{}{e2}{KNOWS}\right]
+	\ph}_{\atom{q6} = \atom{q4} \cup \atom{q5}}
+\Biggr)
+$
+}

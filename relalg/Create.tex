@@ -1,0 +1,17 @@
+{
+\newcommand{\createEdge}{
+	\create{\getedgesdirected{p}{}{c}{}{k, \var{k}.\atom{since} = \ldots}{KNOWS}}
+}
+\newcommand{\ph}{\vphantom{\createEdge}}
+$
+\underbrace{
+	\createEdge
+\ph}_{\atom{q5} - \atom{q7}}
+\underbrace{
+	\create{\getvertices{c, \var{c}.\atom{name} = \ldots}{Person, Student}}
+\ph}_{\atom{q1} - \atom{q4}}
+\underbrace{
+	\left(\getvertices{p}{Person}\right)
+\ph}_{\atom{q0}}
+$
+}

@@ -1,0 +1,351 @@
+\newcommand{\assign}{\rightarrow}
+
+\newcommand{\lxor}{\oplus}
+
+\newcommand{\asc}{\uparrow}
+\newcommand{\desc}{\downarrow}
+
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+\newcommand{\schematuple}[1]{\left\langle #1 \right\rangle}
+\newcommand{\concatenation}{\Vert}
+
+\newcommand{\literal}[1]{\mathsf{#1}}
+\newcommand{\atom}[1]{\mathsf{#1}}
+
+\newcommand{\colonseparator}{:}
+
+\newcommand{\var}[1]{\mathit{#1}}
+%\newcommand{\edgevariable}[2]{\var{#1}\ifstrempty{#2}{}{\hspace{-0.6ex}\colonseparator\hspace{-0.6ex}{\atom{#2}}}}
+\newcommand{\edgevariable}[2]{\var{#1}\ifstrempty{#2}{}{\colonseparator{\atom{#2}}}}
+\newcommand{\vertexvariable}[2]{(\var{#1}\ifstrempty{#2}{}{\colonseparator{\atom{#2}}})}
+
+% see http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf
+
+%%%%%%%%%%%%%%%%%%%%% operator symbols %%%%%%%%%%%%%%%%%%%%%
+
+% Join symbols in TikZ
+
+% https://tex.stackexchange.com/a/20069
+\newcommand{\tikzunit}{1.5ex}
+
+% https://tex.stackexchange.com/a/15037
+\FPpow\triangleheight{3}{0.5}
+\FPdiv\triangleheight{\triangleheight}{2}
+
+\newtoggle{leftouterjoin}
+\newtoggle{semijoin}
+\newtoggle{antijoin}
+
+\newcommand{\tikzjointemplate}[1]{%
+	{% INTENTIONAL BRACES to limit the scope of toogle settings in #1
+	#1
+	\text{\,%
+		% X axis is scaled with sqrt(3)/2
+		\tikz[baseline, x=\tikzunit*\triangleheight, y=\tikzunit, join=round, cap=round]{
+			%\draw[help lines] (-2, 0) grid[step=1] (2, 1);
+			%
+			% left triangle
+			\draw (-1,0) -- (0,0.5) -- (-1,1) -- cycle;
+			% right triangle without horizontal edge
+			\draw (+1,0) -- (0,0.5) -- (+1,1);
+			%
+			% right horizontal edge
+			\ifboolexpr{ not ( togl {semijoin} or togl {antijoin} ) }
+			{
+				\draw (+1,0) -- (+1,1);
+			}{}
+			%
+			\iftoggle{leftouterjoin}
+			{
+				\draw (-1,0) -- (-1.5,0);
+				\draw (-1,1) -- (-1.5,1);
+			}{}
+			%
+			\iftoggle{antijoin}
+			{
+				\draw (-1.2,1.2) -- (+1.2,1.2);
+			}{}
+		}%
+\,%
+}}}
+
+\newcommand{\joinsymbol}{%
+	\tikzjointemplate{}%
+}
+\newcommand{\antijoinsymbol}{%
+	\tikzjointemplate{\toggletrue{antijoin}}%
+}
+\newcommand{\leftouterjoinsymbol}{%
+	\tikzjointemplate{\toggletrue{leftouterjoin}}%
+}
+\newcommand{\semijoinsymbol}{%
+	\tikzjointemplate{\toggletrue{semijoin}}%
+}
+
+% based on http://tex.stackexchange.com/questions/20740/symbols-for-outer-joins
+%\newcommand{\leftouterjoinwhiskerwidth}{.26em}
+%\newcommand{\leftouterjoinwhiskerthickness}{.4pt}
+
+%\def\ojoin{\setbox0=\hbox{$\Join$}\rule[0.1ex]{.27em}{.4pt}\llap{\rule[1.3ex]{.27em}{.4pt}}}
+
+%\def\leftouterjoin{\mathbin{\ojoin\mkern-5.8mu\Join}}
+%\def\rightouterjoin{\mathbin{\Join\mkern-5.8mu\ojoin}}
+%\def\fullouterjoin{\mathbin{\ojoin\mkern-5.8mu\Join\mkern-5.8mu\ojoin}}
+
+%\def\ojoin{\setbox0=\hbox{$\Join$}\rule[0.1ex]{\leftouterjoinwhiskerwidth}{\leftouterjoinwhiskerthickness}\llap{\rule[1.4ex]{\leftouterjoinwhiskerwidth}{\leftouterjoinwhiskerthickness}}}
+%\newcommand{\leftouterjoinsymbol}{\mathbin{\ojoin\mkern-6.4mu\Join}} %bowtie
+
+%\newcommand{\joinsymbol}         {{\tiny \,\textifsym{|><|} \,}}
+%\newcommand{\joinsymbol}         {\bowtie}
+%\newcommand{\antijoinsymbol}     {{\tiny \,\textifsym{|>}   \,}}
+%\newcommand{\leftouterjoinsymbol}{{\tiny \,\textifsym{d|><|b}\,}}
+%\newcommand{\semijoinsymbol}     {{\tiny \,\textifsym{|><}  \,}}
+
+%\newcommand{\joinsymbol}{\bowtie}
+%\newcommand{\antijoinsymbol}{\triangleright}
+%\newcommand{\leftouterjoinsymbol}{{\tiny \,\textifsym{d|><|}\,}}
+%\newcommand{\semijoinsymbol}{\ltimes}
+
+%%%%%%%%%%%%%%%%%%%%% operator names %%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\relalgop}[1]{\textsc{#1}}
+
+\newcommand{\vertexfree}{\medcircle}
+\newcommand{\vertexmaybe}{\ocirc}
+\newcommand{\vertexbound}{\odot}
+
+\newcommand{\getverticesop}{\vertexfree}
+
+\newcommand{\edgearrow}[1]{\mkern-2.8mu #1 \mkern-2.6mu}
+
+\newcommand{\getedgesopdirected}  {{\getverticesop}{\edgearrow{\rightarrow}    }{\getverticesop}}
+\newcommand{\getedgesopundirected}{{\getverticesop}{\edgearrow{\leftrightarrow}}{\getverticesop}}
+
+\newcommand{\expandbothop}{{\vertexbound}{\edgearrow{\leftrightarrow}}{\vertexmaybe}}
+\newcommand{\expandoutop} {{\vertexbound}{\edgearrow{\rightarrow}    }{\vertexmaybe}}
+\newcommand{\expandinop}  {{\vertexbound}{\edgearrow{\leftarrow}     }{\vertexmaybe}}
+
+\newcommand{\alldifferentop}{\not\equiv}
+\newcommand{\duplicateeliminationop}{\delta}
+\newcommand{\sortop}{\tau}
+\newcommand{\sortandtopop}{\topop\sortop}
+\newcommand{\productionop}{\Omega}
+\newcommand{\projectionop}{\pi}
+\newcommand{\renameop}{\rho}
+
+\newcommand{\createop}{\zeta}
+\newcommand{\mergeop}{\zeta^\star}
+\newcommand{\deleteop}{\chi}
+\newcommand{\setop}{set}
+\newcommand{\removeop}{remove}
+\newcommand{\selectionop}{\sigma}
+\newcommand{\groupingop}{\gamma}
+\newcommand{\topop}{\lambda}
+\newcommand{\unwindop}{\omega}
+\newcommand{\unnestop}{\mu}
+\newcommand{\nestop}{\nu}
+
+\newcommand{\joinop}{\joinsymbol}
+\newcommand{\transitivejoinop}{\joinop_{\ast}}
+\newcommand{\antijoinop}{\antijoinsymbol}
+\newcommand{\semijoinop}{\semijoinsymbol}
+\newcommand{\leftouterjoinop}{\leftouterjoinsymbol}
+\newcommand{\thetaleftouterjoinop}{\leftouterjoinsymbol_\theta}
+\newcommand{\unionop}{\cup}
+\newcommand{\Unionop}{\bigcup}
+\newcommand{\bagunionop}{\uplus}
+\newcommand{\Bagunionop}{\biguplus}
+\newcommand{\minusop}{\setminus}
+\newcommand{\intersectionop}{\cap}
+\newcommand{\cartesianproductop}{\times}
+
+%%%%%%%%%%%%%%%%%%%%% operator definitions %%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% nullary operators %%%%%%%%%%
+
+\makeatletter
+\newlength{\negph@wd}
+\DeclareRobustCommand{\negphantom}[1]{%
+  \ifmmode
+    \mathpalette\negph@math{#1}%
+  \else
+    \negph@do{#1}%
+  \fi
+}
+\newcommand{\negph@math}[2]{\negph@do{$\m@th#1#2$}}
+\newcommand{\negph@do}[1]{%
+  \settowidth{\negph@wd}{#1}%
+  \hspace*{-\negph@wd}%
+}
+
+\newcommand{\getvertices}[2]{\getverticesop_{\var{#1}}^{\atom{#2}}}
+
+\newcommand{\getedges}[7]{\tensor*[^{\atom{#2}}_{\var{#1}}]{{\vertexfree}{\edgearrow{#7[\var{#5}]{\atom{#6}}}}{\vertexfree}}{^{\atom{#4}}_{\var{#3}}}}
+\newcommand{\getedgesdirected}[6]{\getedges{#1}{#2}{#3}{#4}{#5}{#6}{\xrightarrow}}
+\newcommand{\getedgesundirected}[6]{\getedges{#1}{#2}{#3}{#4}{#5}{#6}{\xleftrightarrow}}
+
+%\newcommand{\dual}{\var{Dual}}
+\newcommand{\dual}{\{\tuple{}\}}
+
+%%%%%%%%%% unary operators %%%%%%%%%%
+
+% expand operators
+\newcommand{\kleenestar}{\ast}
+\newcommand{\nagivationbody}[3]{\,_{\vertexvariable{#1}{}}^{\vertexvariable{#2}{#3}}}
+\newcommand{\expandedgevariable}[3]{
+  {%\scriptstyle
+	%\left[
+	% #3: minHops, cannot be empty
+	% #4: maxHops, if empty, default to infinity
+	\atom{#1}
+	\ifstrequal{#2}{1} % minHops = 1
+	{
+		\ifstrequal{#3}{1}
+		{} % minHops = 1 and maxHops = 1 -> write nothing
+		{\kleenestar_\atom{#2}^\atom{#3}} % minHops = 1 and maxHops != 1
+	} % minHops != 1
+	{\kleenestar_\atom{#2}^\atom{#3}}
+	%\right]
+  }}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\expand}[8]{{}_{\var{#1}} {\vertexbound}{\edgearrow{#8[\var{#4}]{\expandedgevariable{#5}{#6}{#7}}}}{\vertexfree}_\var{#2}^\atom{#3}}
+
+\newcommand{\expandboth}[7]{\expand{#1}{#2}{#3}{#4}{#5}{#6}{#7}{\xleftrightarrow}}
+\newcommand{\expandout }[7]{\expand{#1}{#2}{#3}{#4}{#5}{#6}{#7}{\xrightarrow}    }
+\newcommand{\expandin  }[7]{\expand{#1}{#2}{#3}{#4}{#5}{#6}{#7}{\xleftarrow}     }
+
+\newcommand{\expandintomaybe}[8]{{}_{\var{#1}} {\vertexbound}{\edgearrow{#8[\var{#4}]{\expandedgevariable{#5}{#6}{#7}}}}{\vertexmaybe}_\var{#2}^\atom{#3}}
+
+\newcommand{\expandbothintomaybe}[7]{\expandintomaybe{#1}{#2}{#3}{#4}{#5}{#6}{#7}{\xleftrightarrow}}
+\newcommand{\expandoutintomaybe }[7]{\expandintomaybe{#1}{#2}{#3}{#4}{#5}{#6}{#7}{\xrightarrow}    }
+\newcommand{\expandinintomaybe  }[7]{\expandintomaybe{#1}{#2}{#3}{#4}{#5}{#6}{#7}{\xleftarrow}     }
+
+\newcommand{\expandintobound}[8]{{}_{\var{#1}} {\vertexbound}{\edgearrow{#8[\var{#4}]{\expandedgevariable{#5}{#6}{#7}}}}{\vertexbound}_\var{#2}^\atom{#3}}
+
+\newcommand{\expandbothintobound}[7]{\expandintobound{#1}{#2}{#3}{#4}{#5}{#6}{#7}{\xleftrightarrow}}
+\newcommand{\expandoutintobound }[7]{\expandintobound{#1}{#2}{#3}{#4}{#5}{#6}{#7}{\xrightarrow}    }
+\newcommand{\expandinintobound  }[7]{\expandintobound{#1}{#2}{#3}{#4}{#5}{#6}{#7}{\xleftarrow}     }
+
+\newcommand{\unwind}[1]{\unwindop_{#1}}
+\newcommand{\unwindarrow}{\Rightarrow}
+\newcommand{\alldifferent}[1]{\alldifferentop_{#1}}
+\newcommand{\duplicateelimination}{\duplicateeliminationop}
+\newcommand{\sort}[1]{\sortop_{#1}}
+\newcommand{\projection}[1]{\projectionop_{#1}}
+
+\newcommand{\topp}[2]{\topop_{#1}^{#2}}
+\newcommand{\sortandtop}[3]{\left\{ \sortop_{#1} \topop_{#2}^{#3} \right\}}
+\newcommand{\skipp}[1]{\topop^{#1}}
+\newcommand{\limit}[1]{\topop_{#1}}
+% CUD operators
+\newcommand{\create}[1]{\createop_{#1}}
+\newcommand{\mergenode}[1]{\mergeop_{#1}}
+% delete: #1: '*' in case of DETACH DELETE, otherwise empty. #2: variable list to delete
+\newcommand{\delete}[2]{\deleteop_{#2}^{#1}}
+\newcommand{\setnode}[1]{\setop_{#1}}
+\newcommand{\removenode}[1]{\removeop_{#1}}
+
+\newcommand{\selection}[1]{\selectionop_{#1}}
+\newcommand{\rename}[1]{\renameop_{#1}}
+\newcommand{\grouping}[2]{\groupingop_{#1}^{#2}}
+\newcommand{\production}[1]{\productionop_{#1}}
+\newcommand{\nest}[1]{\nestop_{#1}}
+\newcommand{\unnest}[1]{\unnestop_{#1}}
+
+%%%%%%%%%% binary operators %%%%%%%%%%
+
+\newcommand{\join}{\joinop}
+%\newcommand{\transitivejoin}[2]{{\joinop}{ \text{\scriptsize{\(\ast_{#1}^{#2}\)}} }}
+%\newcommand{\transitivejoin}[2]{{\joinop}{\ast_{#1}^{#2}}}
+\newcommand{\transitivejoin}[2]{\overset{\ast_{#1}^{#2}}{\joinop}}
+\newcommand{\antijoin}{\antijoinop}
+\newcommand{\semijoin}{\semijoinop}
+\newcommand{\leftouterjoin}{\leftouterjoinop}
+\newcommand{\thetaleftouterjoin}{\thetaleftouterjoinop}
+\newcommand{\union}{\unionop}
+\newcommand{\Union}{\Unionop}
+\newcommand{\bagunion}{\bagunionop}
+\newcommand{\Bagunion}{\bagunionop}
+%\newcommand{\minus}{\minusop}
+\newcommand{\intersection}{\intersectionop}
+\newcommand{\cartesianproduct}{\cartesianproduct}
+
+% colors
+
+\definecolor{red}{HTML}{d7191c}
+\definecolor{lilac}{HTML}{984ea3}
+\definecolor{red}{HTML}{d7191c}
+\definecolor{blue}{HTML}{2b83ba}
+
+\colorlet{nestedschemacolor}{blue}
+\colorlet{flatschemacolor}{red}
+\colorlet{nullarynodecolor}{lilac}
+
+\newcommand{\operatortext}[1]{#1\xspace}
+
+% nullary
+\newcommand{\getverticestext}{\operatortext{get-vertices}}
+\newcommand{\getedgestext}{\operatortext{get-edges}}
+
+% unary
+\newcommand{\expandtext}{\operatortext{expand}}
+\newcommand{\expandouttext}{\operatortext{expand-out}}
+\newcommand{\expandintext}{\operatortext{expand-in}}
+\newcommand{\expandbothtext}{\operatortext{expand-both}}
+
+\newcommand{\transitiveexpandtext}{\operatortext{transitive expand}}
+\newcommand{\transitiveexpandouttext}{\operatortext{transitive expand-out}}
+\newcommand{\transitiveexpandintext}{\operatortext{transitive expand-in}}
+\newcommand{\transitiveexpandbothtext}{\operatortext{transitive expand-both}}
+
+\newcommand{\projectiontext}{\operatortext{projection}}
+\newcommand{\renametext}{\operatortext{rename}}
+\newcommand{\selectiontext}{\operatortext{selection}}
+\newcommand{\alldifferenttext}{\operatortext{all-different}}
+\newcommand{\duplicateeliminationtext}{\operatortext{duplicate-elimination}}
+\newcommand{\groupingtext}{\operatortext{grouping}}
+\newcommand{\sorttext}{\operatortext{sort}}
+\newcommand{\toptext}{\operatortext{top}}
+\newcommand{\sortandtoptext}{\operatortext{sort-and-top}}
+\newcommand{\unwindtext}{\operatortext{unwind}}
+\newcommand{\createtext}{\operatortext{create}}
+\newcommand{\deletetext}{\operatortext{delete}}
+\newcommand{\mergetext}{\operatortext{merge}}
+\newcommand{\removetext}{\operatortext{remove}}
+\newcommand{\settext}{\operatortext{set}}
+\newcommand{\productiontext}{\operatortext{production}}
+
+% binary
+\newcommand{\baguniontext}{\operatortext{bag union}}
+\newcommand{\antijointext}{\operatortext{antijoin}}
+\newcommand{\semijointext}{\operatortext{semijoin}}
+\newcommand{\cartesianproducttext}{\operatortext{Cartesian product}}
+\newcommand{\transitivejointext}{\operatortext{transitive join}}
+\newcommand{\leftouterjointext}{\operatortext{left outer join}}
+\newcommand{\thetaleftouterjointext}{\operatortext{theta left outer join}}
+\newcommand{\jointext}{\operatortext{natural join}}
+\newcommand{\uniontext}{\operatortext{union}}
+
+\newcommand{\relnull}{\ensuremath{\mathsf{NULL}}}
+\newcommand{\relnulls}{\ensuremath{\tuple{\mathsf{NULL}}}}
+
+
+% misc
+\newcommand{\schema}[1]{\mathrm{sch} \left( #1 \right)}
+\newcommand{\schemabrackets}[1]{\mathrm{sch}\left[ #1 \right]}
+
+\newcommand{\labelsLlong}{l_1, \ldots, l_\var{k}}
+\newcommand{\labelsL}{L}
+
+\newcommand{\labelsAlong}{l_{1,1}, \ldots, l_{1,\var{m}}}
+\newcommand{\labelsA}{L1}
+
+\newcommand{\labelsBlong}{l_{2,1}, \ldots, l_{2,\var{n}}}
+\newcommand{\labelsB}{L2}
+
+\newcommand{\typeslong}{t_1, \ldots, t_\var{n}}
+\newcommand{\types}{T}
+
+\newcommand{\alias}{/}

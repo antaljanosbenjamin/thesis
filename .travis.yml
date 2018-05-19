@@ -1,0 +1,41 @@
+addons:
+  apt:
+    packages:
+    - lmodern
+    - pgf
+    - texlive-base
+    - texlive-generic-recommended
+    - texlive-fonts-extra
+    - texlive-fonts-recommended
+    - texlive-latex-extra
+    - texlive-latex-recommended
+    - texlive-luatex
+    - texlive-science
+    - texlive-generic-extra
+    - texlive-math-extra
+    - texlive-xetex
+    - latexmk
+env:
+  global:
+  - DEPLOY_BRANCH: gh-pages
+  - COMPILE_CMD: pdflatex -quiet -interaction=nonstopmode
+script:
+- make
+- mkdir out/
+- cp *.pdf out/
+notifications:
+  slack:
+    rooms:
+      - ingraph:z9nmKrLOXwJsOtPy2fIlsNyv
+    on_success: change
+    on_failure: always
+  email:
+    on_success: change
+    on_failure: always
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local-dir: out
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master

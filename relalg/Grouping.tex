@@ -1,0 +1,19 @@
+{
+\newcommand{\ph}{\vphantom{\big()}}
+$
+\grouping{\mathit{lang}, \texttt{collect} \left( \var{name} \right) / \mathit{speakers}}{\mathit{lang}}
+\bigl(
+\underbrace{
+	\unwind{p.\atom{speaks} \unwindarrow \mathit{lang}}
+\ph}_{\atom{q2}}
+	\bigl(
+		\underbrace{
+			\projection{\var{p}, \var{p}.\atom{speaks}, \var{p}.\atom{name} / \var{name}}
+		\ph}_{\atom{q1}}
+		\underbrace{
+			\left(\getvertices{p, \var{p}.\atom{speaks}, \var{p}.\atom{name}}{Person}\right)
+		\ph}_{\atom{q0}}
+	\bigr)
+\bigr)
+$
+}

@@ -1,0 +1,22 @@
+% !TeX spellcheck = hu_HU
+% !TeX encoding = UTF-8
+\chapter{Összefoglalás és jövőbeli tervek}\label{sec:osszefoglalo}
+
+Dolgozatomban megvizsgáltam azt a kérdést, hogy a manapság elérhető gráf információs rendszerek milyen kifejezővel, teljesítménnyel rendelkeznek, és vajon a hagyományos relációs adatbázisok megfelelő alternatívát nyújthatnak-e gráflekérdezések kiértékelésére~\cite{DBLP:conf/grades/PacaciZLO17}. Ezen kívül megvizsgáltam az illesztési algoritmusok legnagyobb kihívásait a gráfadatbázisokban, és ezek alapján javaslatokat tettem az ingraph rendszer fejlesztésére. Az inkrementális nézetkarbantartás témakörében megvizsgáltam a differenciális adatfolyamokat, mint lehetséges inkrementális számítási modellt.
+
+\section{Kontribúciók}
+
+\paragraph{Teljesítménymérés}
+
+A dolgozat készítése során elkészítettem az LDBC Social Network Benchmark \emph{Business Intelligence} terhelési profiljának lekérdezéseihez a SPARQL nyelvű implementációkat és az \emph{Interactive} terhelési profiljának lekérdezéseihez a Cypher és a SPARQL nyelvű implementációkat, illetve implementáltam a keretrendszerhez szükséges szoftvermodulokat három gráf alapú adatbázis-kezelő eszközhöz. Implementáltam továbbá a Gremlin nyelvet támogató eszközökhöz az adatok betöltését elvégző alkalmazást. Az elkészített implementációkkal lemértem több eszköz teljesítményét és értékeltem a kapott eredményeket. Az eredmények rávilágítottak arra, hogy a hagyományos relációs adatbázisok gráf jellegű terhelési profilok esetén is versenyképesek.
+
+\paragraph{Inkrementális nézetkarbantartás}
+
+Az inkrementális nézetkarbantárssal kapcsolatban megvizsgáltam a lehetséges megközelítéseket, és implementáltam a Transformation Tool Contest verseny 2018 feladatai közül a \emph{Közösségi háló} feladat két lekérdezését differenciális adatfolyamokat felhasználva. Az elkészült implementációt összemértem a versenyre készített megoldások közül hárommal. Az eredmények alapján a differenciális adatfolyamok jól skálázódnak a válaszidőt és a memóriahasználatot tekintve is.
+
+
+\section{Jövőbeli tervek}
+
+Céljaim között szerepel a teljesítménymérési keretrendszer bővítése, azaz további eszközökhöz szükséges szoftvermodulok implementálása. Kiemelt célom a lekérdezések teljesítményének mérése a \emph{Cypher for Spark}, valamint a \emph{Cypher for Gremlin} eszközökkel. A \emph{Business Intelligence} terhelési profil kapcsán az LDBC SNB munkacsoport célja a profil bővítése kötegelt (batch) frissítésekkel, amelyek az additív frissítéseken túl törlő jellegű frissítéseket is tartalmaznak. Ezen bővítések kidolgozásában és implementálásában is tervezek részt venni. Terveim között szerepel továbbá az \emph{Interactive} terhelési profil komplex lekérdezésein túl a rövid lekérdezések (SR1, \ldots, SR7) és a frissítések (U1, \ldots U8) teljesítménymérése és publikálása is. 
+
+A differenciális adatfolyamhoz kapcsolódóan tervezem implementálni a dolgozatomban bemutatott TTC feladatot a differenciális adatfolyamokat támogató Differental Dataflow nevű, Rust nyelvű keretrendszerben. Az implementáláson túl természetesen a teljesítményét is tervezem összehasonlítani a meglévő megoldások teljesítményével.

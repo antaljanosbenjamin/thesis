@@ -1,0 +1,202 @@
+Opening database /home/ubuntu/aprat//snb.gdb ... 
+Database opened in 101 ms 
+Created thread 0
+Executing with thread strategy shortestjobfirst
+Received status connection
+Received shutdown signal
+Waiting for current executing threads to finish
+Execution Time 9783.71
+Worker 0executed 200000 queries
+Shurting down Sparksee database
+query1:
+  count: 21090
+  min_time: 505
+  max_time: 15070
+  avg_time: 8136.554196
+  min_delay: 12
+  max_delay: 92
+  avg_delay: 23.367899
+query2:
+  count: 14820
+  min_time: 2352
+  max_time: 36571
+  avg_time: 18756.216194
+  min_delay: 10
+  max_delay: 74
+  avg_delay: 23.232524
+query3:
+  count: 7947
+  min_time: 1829
+  max_time: 11041
+  avg_time: 2884.708066
+  min_delay: 15
+  max_delay: 103
+  avg_delay: 26.076381
+query4:
+  count: 15232
+  min_time: 430
+  max_time: 8070
+  avg_time: 3741.296744
+  min_delay: 11
+  max_delay: 74
+  avg_delay: 23.990612
+query5:
+  count: 9620
+  min_time: 7736
+  max_time: 1013456
+  avg_time: 404598.741892
+  min_delay: 14
+  max_delay: 193
+  avg_delay: 23.103742
+query6:
+  count: 4250
+  min_time: 464
+  max_time: 40136
+  avg_time: 25879.688471
+  min_delay: 15
+  max_delay: 58
+  avg_delay: 23.369647
+query7:
+  count: 6302
+  min_time: 1682
+  max_time: 114925
+  avg_time: 26635.483497
+  min_delay: 13
+  max_delay: 53
+  avg_delay: 22.612663
+query8:
+  count: 12185
+  min_time: 554
+  max_time: 2283
+  avg_time: 1051.718506
+  min_delay: 12
+  max_delay: 78
+  avg_delay: 22.756586
+query9:
+  count: 3492
+  min_time: 447
+  max_time: 988934
+  avg_time: 764629.683849
+  min_delay: 15
+  max_delay: 67
+  avg_delay: 23.143757
+query10:
+  count: 18278
+  min_time: 443
+  max_time: 87600
+  avg_time: 49471.359120
+  min_delay: 14
+  max_delay: 66
+  avg_delay: 23.335868
+query11:
+  count: 34272
+  min_time: 434
+  max_time: 72705
+  avg_time: 20703.035452
+  min_delay: 13
+  max_delay: 101
+  avg_delay: 23.711339
+query12:
+  count: 12462
+  min_time: 3488
+  max_time: 88965
+  avg_time: 49823.171241
+  min_delay: 14
+  max_delay: 210
+  avg_delay: 23.230782
+query13:
+  count: 28860
+  min_time: 482
+  max_time: 3699
+  avg_time: 956.146570
+  min_delay: 10
+  max_delay: 105
+  avg_delay: 23.038254
+query14:
+  count: 11190
+  min_time: 546
+  max_time: 3231
+  avg_time: 1649.725290
+  min_delay: 13
+  max_delay: 57
+  avg_delay: 22.584718
+update1:
+  count: 0
+update2:
+  count: 0
+update3:
+  count: 0
+update4:
+  count: 0
+update5:
+  count: 0
+update6:
+  count: 0
+update7:
+  count: 0
+update8:
+  count: 0
+short1:
+  count: 0
+short2:
+  count: 0
+short3:
+  count: 0
+short4:
+  count: 0
+short5:
+  count: 0
+short6:
+  count: 0
+short7:
+  count: 0
+bi1:
+  count: 0
+bi2:
+  count: 0
+bi3:
+  count: 0
+bi4:
+  count: 0
+bi5:
+  count: 0
+bi6:
+  count: 0
+bi7:
+  count: 0
+bi8:
+  count: 0
+bi9:
+  count: 0
+bi10:
+  count: 0
+bi11:
+  count: 0
+bi12:
+  count: 0
+bi13:
+  count: 0
+bi14:
+  count: 0
+bi15:
+  count: 0
+bi16:
+  count: 0
+bi17:
+  count: 0
+bi18:
+  count: 0
+bi19:
+  count: 0
+bi20:
+  count: 0
+bi21:
+  count: 0
+bi22:
+  count: 0
+bi23:
+  count: 0
+bi24:
+  count: 0
+bi25:
+  count: 0

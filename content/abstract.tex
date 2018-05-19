@@ -1,0 +1,40 @@
+%\pagenumbering{roman}
+\setcounter{page}{1}
+
+\selecthungarian
+
+%----------------------------------------------------------------------------
+% Abstract in Hungarian
+%----------------------------------------------------------------------------
+\chapter*{Kivonat}\addcontentsline{toc}{chapter}{Kivonat}
+
+Az elmúlt évtizedben sokféle különböző NoSQL technikát használó adatbázis-kezelő készült. Ezek egyik csoportja a gráfadatbázisoké, melyek lehetővé teszik az adatok gráf formában történő tárolását és lekérdezését. Ez az adatmodell gyakran jobban illeszkedik a sok összefüggést tartalmazó adatok tárolására, mint a relációs modell, és a tömörsége miatt gyakran képes jobb teljesítményt nyújtani. Mindezek ellenére, mivel a relációs adatbázisokat majdnem 50 éve fejlesztik és optimalizálják, jelenleg is nyitott kérdés, hogy szükség van-e specializált gráfadatbázisokra a gráfadatok hatékony feldolgozásához.
+
+A gráfadatbázisok számos felhasználási esetében -- ajánlórendszerek, pénzügyi csalások felderítése -- a lekérdezések össszetettek, és ezek ismételt, gyors végrehajtása kritikus eleme a munkafolyamatoknak, továbbá a gráfadatbázisokat egyre többször használják szoftverek modelljeinek validációjára és forráskód-elemzésére. Az ilyen felhasználási módok esetében a hagyományos gráfadatbázis-kezelőknél jobb teljesítményt tudna nyújtani egy inkrementális lekérdezéseket támogató gráfadbázis-kezelő rendszer, amely támogatja nézetek létrehozását és azokat automatikusan karbantartja az adatbázis változása során.
+
+Különböző adatbázis-kezelő rendszerek összehasonlításához elengedhetetlenek a teljesítménymérési specifikációk (benchmarkok). Relációs adatbázisok esetében ezt a szerepet a Transaction Processing Performance Council benchmarkjai töltik be. A gráfadatbázisok relatív kiforratlansága miatt jelenleg kevés teljesítménymérési keretrendszer létezik a gráflekérdezések teljesítménymérésére. Azért, hogy segítsem egy szabványos teljesítménymérési keretrendszer létrejöttét, bekapcsolódtam az LDBC (Linked Data Benchmark Council) Social Network Benchmark fejlesztésébe, amelynek keretében frissítettem és jelentősen fejlesztettem a meglévő implementációkat, továbbá elkészítettem a SPARQL nyelvű implementációt. Ezek felhasználásával megvizsgáltam és részletesen elemeztem az adatbázis kezelőket különböző adatmodellek (relációs, gráf és szemantikus) felhasználásával.
+
+Az inkrementális gráflekérdezésekhez kapcsolódóan megismertem az időalapú és differenciális adatfolyamok programozási paradigmákat, és a TTC (Transformation Tool Contest) verseny 2018-as feladatát megvalósítottam egy differenciális adatfolyamok létrehozását támogató szoftverkönyvtár, a Naiad felhasználásával. Ennek teljesítményét összehasonlítottam a versenyre érkezett más megoldások teljesítményével.
+
+\vfill
+\selectenglish
+
+
+%----------------------------------------------------------------------------
+% Abstract in English
+%----------------------------------------------------------------------------
+\chapter*{Abstract}\addcontentsline{toc}{chapter}{Abstract}
+
+In the last decade, numerous database management systems were developed under the umbrella of  NoSQL techniques. One group of these systems is the family of graph databases, which allows users to store and query their data as graphs. This data model is often a better fit to represent strongly interlinked data sets than the traditional relational model, and its conciseness can lead to better performance. That said, relational databases have been developed and optimized for almost 50 years, and it is an open question whether efficient processing of graph data requires specialized databases at all.
+
+In many use cases of graph databases -- financial fraud detection, recommendation engines -- the graph queries are complex, and their repeated, efficient executions are crucial for these use cases. Furthermore, graph databases are increasingly used for software model validation and source code analysis. These application scenarios could greatly benefit from an incremental graph query engine that allows users to register views and maintain their state upon on changes.
+
+Comparing the performance of database systems requires standard benchmarks. For relational databases, this has been fulfilled by the benchmarks of the Transaction Processing Performance Council for more than two decades. Due to the relative immaturity of graph databases, there is only a limited number of benchmarks available for graph query workloads. To help establishing a standard benchmark, I joined the development of the LDBC (Linked Data Benchmark Council) Social Network Benchmark. I reworked and significantly improved existing implementations of the benchmark, and also implemented the queries in the SPARQL language for semantic databases. I performed a thorough evaluation and detailed analysis of database systems using various data models (relational, graph, and semantic).
+
+Related to incremental graph query processing, I studied the timely and differential dataflow programming paradigms. I demonstrated their applicability by implementing a solution for the 2018 Transformation Tool Contest’s live challenge using the Naiad differential dataflow software library and compared its performance to other solutions.
+\vfill
+\selectthesislanguage
+
+\newcounter{romanPage}
+\setcounter{romanPage}{\value{page}}
+\stepcounter{romanPage}

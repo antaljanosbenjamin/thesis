@@ -1,0 +1,7 @@
+2018-11-27 12:50:34.633|SPARKSEE[INFO] ** START ** 2018-11-27 12:50:34.633 Software version: 5.2.3
+2018-11-27 12:50:34.634|SPARKSEE[INFO] Decoded license: Software version [5] Objects limit [unlimited] Sessions limit [unlimited] Identifier [1078] Expiration date [2/2019] High-Availability [on]
+2018-11-27 12:50:34.636|RM[INFO] RECOVERY ENABLED
+2018-11-27 12:50:34.873|RM[INFO] RECOVERY DISABLED
+2018-11-27 12:50:34.873|RM[INFO] REDO PHASE: 0 OPERATIONS
+2018-11-27 12:50:34.873|RM[INFO] RECOVERY ENABLED
+2018-11-27 12:50:35.877|SPARKSEE[INFO] GraphPool 'ldbc' has been opened at /home/ubuntu/aprat//snb.gdb

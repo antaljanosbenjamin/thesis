@@ -1,0 +1,146 @@
+library(tidyverse)
+library(plyr)
+library(scales)
+
+#install.packages("tidyverse")
+
+gm_mean = function(x, na.rm=TRUE) { exp(sum(log(x[x > 0]), na.rm=na.rm) / length(x)) }
+
+postgres <- " PostgreSQL 10.6 "
+cypher <- " Neo4j 3.3.6 CE w/ Cypher "
+#virtuoso <- " Virtuoso 7.2.5 w/ SPARQL  "
+#stardog <- " Stardog 5.3.3  "
+virtuoso <- " Semantic DB 1  "
+stardog <- " Semantic DB 2  "
+c2s <- " Cypher-to-SQL (C2S)  "
+sparksee <- " Sparksee 5.2.3  "
+
+
+load_results = function(filename, tool, sf) {
+  print(filename)
+  df <- read_delim(filename, delim="|")
+  df <- df[c("operation_type", "execution_duration_MILLISECONDS")]
+  df <- select(df, op = operation_type, s = execution_duration_MILLISECONDS)
+  df$s <- df$s / 1000
+  df$op <- as.numeric(gsub("[^0-9]*([0-9]+)[^0-9]*$", "\\1", df$op))
+  df$tool <- tool
+  df$sf <- sf
+  df
+}
+
+nice_y_axis = function() {
+  options(scipen=999)
+  
+  # y axis labels
+  #longticks = c(F, T, F, T, F, T, F, F, T)
+  #             2  3  4  5  6  7  8  9 10
+  longticks = c(T, F, F, T, F, F, F, F, T)
+  shortticks = 2:10
+  range = -6:6
+  
+  ooms = 10^range
+  
+  ybreaks = as.vector(shortticks %o% ooms)
+  ylabels = as.character(ybreaks * longticks)
+  ylabels = gsub("^0$", "", ylabels)
+  
+  list(ybreaks = ybreaks, ylabels = ylabels)
+}
+
+ldbc_plot = function(df.plot, ncol, aggr, custom_theme) {
+  yaxis <- nice_y_axis()
+  p <- ggplot(df.plot, aes_string(x="sf", y="s", fill="tool"))
+  
+  if (aggr) {
+    p <- p + 
+      geom_line(aes(col=tool, group=tool)) +
+      geom_point(aes(col=tool, shape=tool), size = 2.0)
+  } else {
+    p <- p +
+      geom_point(aes(col=tool, shape=tool), alpha = 3/4, size = 2.0) +
+      guides(colour = guide_legend(override.aes = list(alpha = 1)))
+  }
+  p <- p +
+    scale_y_log10(breaks = yaxis$ybreaks, labels = yaxis$ylabels) +
+    facet_wrap(~op, ncol=ncol, drop=FALSE, scales="fixed") +
+    #xlab("Scale factor [#nodes/edges - SF1: 3/17M, SF3: 9/52M, SF10: 30/177M]") +
+    xlab("Scale factor") +
+    ylab("Execution time [s]") +
+    theme_bw() +
+    theme(
+      panel.spacing = unit(0.1, "lines"),
+      plot.margin=unit(c(1,1,1,1), "mm")
+    ) +
+    custom_theme
+  p
+}
+
+df <- bind_rows(
+    #load_results("cypher/results-SF1/LDBC-SNB-results_log.csv", cypher, "1"),
+    #load_results("cypher/results-SF3/LDBC-SNB-results_log.csv", cypher, "3"),
+    #load_results("cypher/results-SF10/LDBC-SNB-results_log.csv", cypher, "10"),
+    #
+    load_results("postgres/results-SF1/LDBC-SNB-results_log.csv", postgres, "1"),
+    load_results("postgres/results-SF3/LDBC-SNB-results_log.csv", postgres, "3"),
+    load_results("postgres/results-SF10/LDBC-SNB-results_log.csv", postgres, "10"),
+    #
+    load_results("sparksee/results-SF1/execution_0001_1_1.log", sparksee, "1"),
+    load_results("sparksee/results-SF3/execution_0003_1_1.log", sparksee, "3"),
+    load_results("sparksee/results-SF10/execution_0010_1_1.log", sparksee, "10"),
+    #
+    load_results("stardog/results-SF1/LDBC-SNB-results_log.csv", stardog, "1"),
+    load_results("stardog/results-SF3/LDBC-SNB-results_log.csv", stardog, "3"),
+    #
+    load_results("virtuoso/results-SF1/LDBC-SNB-results_log.csv", virtuoso, "1"),
+    load_results("virtuoso/results-SF3/LDBC-SNB-results_log.csv", virtuoso, "3"),
+    load_results("virtuoso/results-SF10/LDBC-SNB-results_log.csv", virtuoso, "10"),
+    #
+    #load_results("c2s/results-SF1/LDBC-SNB-results_log.csv", c2s, "1"),
+    #load_results("c2s/results-SF3/LDBC-SNB-results_log.csv", c2s, "3"),
+    #load_results("c2s/results-SF10/LDBC-SNB-results_log.csv", c2s, "10"),
+    #
+)
+
+df$sf <- factor(df$sf, levels=c("0.1", "0.3", "1", "3", "10"))
+df$tool <- factor(df$tool, levels=c(cypher, postgres, virtuoso, stardog, sparksee, c2s))
+
+aggregated <- ddply(
+  .data = df,
+  .variables = c("op", "sf", "tool"),
+  .fun = colwise(gm_mean)
+)
+p = ldbc_plot(aggregated, 7, T,
+          theme(
+            legend.direction = "horizontal",
+            legend.title = element_blank(),
+            legend.position = "bottom",
+            legend.text.align = 1,
+            legend.text = element_text(size = 14),
+            legend.background = element_rect("transparent"),
+            legend.key.size = unit(0.3, "cm"),
+            #axis.text.x = element_text(size=12),
+            #axis.text.y = element_text(size=12),
+            #axis.title.x = element_text(size=14),
+            #axis.title.y = element_text(size=14),
+            #strip.text.x = element_text(size=16),
+          ))
+ggsave(file="results-interactive-aggregated.pdf", width=250, height=250, units="mm")
+ggsave(file="results-interactive-aggregated.png", width=250, height=250, units="mm")
+
+p = ldbc_plot(df, 7, F,
+          theme(
+            legend.direction = "horizontal",
+            legend.title = element_blank(),
+            legend.position = "bottom",
+            legend.text.align = 1,
+            legend.text = element_text(size = 14),
+            legend.background = element_rect("transparent"),
+            legend.key.size = unit(0.3, "cm"),
+            #axis.text.x = element_text(size=12),
+            #axis.text.y = element_text(size=12),
+            #axis.title.x = element_text(size=14),
+            #axis.title.y = element_text(size=14),
+            #strip.text.x = element_text(size=16),
+          ))
+ggsave(file="results-interactive-detailed.pdf", width=250, height=250, units="mm")
+ggsave(file="results-interactive-detailed.png", width=250, height=250, units="mm")

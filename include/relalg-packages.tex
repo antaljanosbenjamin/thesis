@@ -1,0 +1,35 @@
+% thanks to http://tex.stackexchange.com/a/47579/71109
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\newif\ifxetexorluatex % a new conditional starts as false
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi>0
+   \xetexorluatextrue
+\fi
+
+\ifxetexorluatex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+%  \usepackage[lighttt]{lmodern}
+\fi
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{etoolbox}
+\usepackage{xspace}
+\newtoggle{textualoperators}
+
+\usepackage{tikz}
+% Using the forest package, there is a known issue that edges sometimes cut through child nodes.
+% See the package documentation on CTAN (https://www.ctan.org/pkg/forest), section 6.2. "Known bugs", "Edges cutting through sibling nodes":
+% While it would be possible to fix the situation after child alignment (at least for some child alignment methods), I have decided against that, since the distances between siblings would soon become too large. [...] The bottomline is, please use manual adjustment to fix such situations.
+\usepackage{forest}
+
+\usetikzlibrary{arrows,shapes.arrows,automata}
+
+\tikzset{every node/.style={draw}}
+
+\usepackage{tensor}
+
+\usepackage{fp}

@@ -1,0 +1,35 @@
+% Színek
+\definecolor{lightblue}{rgb}{0.68, 0.85, 0.9}
+\definecolor{apricot}{rgb}{0.98, 0.73, 0.51}
+\definecolor{fullblue}{rgb}{0.0, 0.0, 0.99}
+
+% Megjegyzések személyekre
+\newcommand{\kovi}[1]{\todo[color=green]{\textbf{Kovi:} #1}}
+\newcommand{\koviLine}[1]{\todo[inline,color=green]{#1}}
+
+\newcommand{\szarnyasg}[1]{\todo[color=lightblue]{\textbf{G:} #1}}
+\newcommand{\szarnyasgLine}[1]{\todo[inline,color=lightblue]{#1}}
+
+%--------------------------------------------------------------------------------------
+% Redefine reference style
+%--------------------------------------------------------------------------------------
+\newcommand{\figref}[1]{\ref{fig:#1}.}
+\renewcommand{\eqref}[1]{(\ref{eq:#1}).}
+\newcommand{\listref}[1]{\ref{listing:#1}.}
+\newcommand{\secref}[1]{\ref{sec:#1}.}
+\newcommand{\tabref}[1]{\ref{tab:#1}.}
+\newcommand{\exref}[1]{\ref{example:#1}.}
+
+\newcommand{\afigref}[1]{\aref{fig:#1}.}
+\newcommand{\aeqref}[1]{(\aref{eq:#1}).}
+\newcommand{\alistref}[1]{\aref{listing:#1}.}
+\newcommand{\asecref}[1]{\aref{sec:#1}.}
+\newcommand{\atabref}[1]{\aref{tab:#1}.}
+\newcommand{\aexref}[1]{\aref{example:#1}.}
+
+\newcommand{\Afigref}[1]{\Aref{fig:#1}.}
+\newcommand{\Aeqref}[1]{(\Aref{eq:#1}).}
+\newcommand{\Alistref}[1]{\Aref{listing:#1}.}
+\newcommand{\Asecref}[1]{\Aref{sec:#1}.}
+\newcommand{\Atabref}[1]{\Aref{tab:#1}.}
+\newcommand{\Aexref}[1]{\Aref{example:#1}.}
