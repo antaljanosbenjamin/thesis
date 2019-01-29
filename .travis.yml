@@ -24,14 +24,9 @@ script:
 - mkdir out/
 - cp *.pdf out/
 notifications:
-  slack:
-    rooms:
-      - ingraph:z9nmKrLOXwJsOtPy2fIlsNyv
-    on_success: change
-    on_failure: always
   email:
-    on_success: change
-    on_failure: always
+    on_success: never
+    on_failure: never
 deploy:
   provider: pages
   skip-cleanup: true
